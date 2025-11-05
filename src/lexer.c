@@ -93,7 +93,7 @@ static Token scan_identifier(Lexer *lexer) {
     }
     
     size_t length = lexer->position - start;
-    char *value = (char *)malloc(length + 1);
+    char *value = malloc(length + 1);
     strncpy(value, lexer->source + start, length);
     value[length] = '\0';
     
@@ -122,7 +122,7 @@ static Token scan_number(Lexer *lexer) {
     }
     
     size_t length = lexer->position - start;
-    char *value = (char *)malloc(length + 1);
+    char *value = malloc(length + 1);
     strncpy(value, lexer->source + start, length);
     value[length] = '\0';
     
@@ -150,7 +150,7 @@ static Token scan_string(Lexer *lexer) {
     }
     
     size_t length = lexer->position - start;
-    char *value = (char *)malloc(length + 1);
+    char *value = malloc(length + 1);
     strncpy(value, lexer->source + start, length);
     value[length] = '\0';
     

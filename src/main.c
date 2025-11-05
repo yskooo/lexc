@@ -20,15 +20,15 @@ int main(int argc, char *argv[]) {
         fseek(file, 0, SEEK_SET);
         
         /* Read file contents */
-        char *buffer = (char *)malloc(size + 1);
+        char *buffer = malloc(size + 1);
         if (buffer == NULL) {
             fprintf(stderr, "Error: Memory allocation failed\n");
             fclose(file);
             return 1;
         }
         
-        fread(buffer, 1, size, file);
-        buffer[size] = '\0';
+        size_t bytes_read = fread(buffer, 1, size, file);
+        buffer[bytes_read] = '\0';
         fclose(file);
         
         input = buffer;
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
         token_free(&token);
     } while (token.type != TOKEN_EOF);
     
-    free((void *)input);
+    free((char *)input);
     
     return 0;
 }
