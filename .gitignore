@@ -68,3 +68,4 @@ dist/
 # Core dumps
 core
 vgcore.*
+_codeql_detected_source_root
