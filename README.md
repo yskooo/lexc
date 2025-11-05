@@ -45,16 +45,15 @@ Or directly:
 
 ```
 lexc/
-├── include/          # Header files
-│   └── lexer.h      # Lexer interface and token definitions
 ├── src/             # Source files
-│   ├── lexer.c      # Lexer implementation
-│   └── main.c       # Main program
+│   └── lexer.c      # Complete lexer implementation (all-in-one file)
 ├── examples/        # Example input files
 │   └── sample.c     # Sample C-like code
 ├── Makefile         # Build configuration
 └── README.md        # This file
 ```
+
+The lexer is implemented as a single standalone C file for simplicity and educational purposes, with all type definitions, implementation, and main function contained in one file.
 
 ## Supported Tokens
 

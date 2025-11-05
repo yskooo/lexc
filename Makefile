@@ -1,36 +1,29 @@
 # Makefile for Lexical Analyzer (lexc)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 -I./include
+CFLAGS = -Wall -Wextra -std=c99
 TARGET = lexc
 SRC_DIR = src
-OBJ_DIR = obj
 BIN_DIR = bin
 
-# Source files
-SOURCES = $(wildcard $(SRC_DIR)/*.c)
-OBJECTS = $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Source file
+SOURCE = $(SRC_DIR)/lexer.c
 
 # Default target
 all: directories $(BIN_DIR)/$(TARGET)
 
 # Create necessary directories
 directories:
-	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(BIN_DIR)
 
-# Link the executable
-$(BIN_DIR)/$(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $^ -o $@
+# Compile the executable directly from source
+$(BIN_DIR)/$(TARGET): $(SOURCE)
+	$(CC) $(CFLAGS) $< -o $@
 	@echo "Build complete: $(BIN_DIR)/$(TARGET)"
-
-# Compile source files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean build artifacts
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(BIN_DIR)
 	@echo "Clean complete"
 
 # Run the program with default input
